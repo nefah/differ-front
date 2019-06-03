@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InvoiceService } from '../invoice.service';
 
 import { Invoice }    from '../models/invoice';
 
@@ -13,7 +14,15 @@ export class InvoiceFormComponent {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  constructor(private invoiceService: InvoiceService) {}
+
+  onSubmit(form) { 
+    console.log(form);
+    this.submitted = true; 
+    this.invoiceService.postInvoice(form);
+    this.newInvoice();
+    
+  }
 
   newInvoice() {
     this.model = new Invoice(0.0, '');

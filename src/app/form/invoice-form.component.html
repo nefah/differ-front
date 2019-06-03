@@ -1,7 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Invoice Form for Translation</h1>
-    <form (ngSubmit)="onSubmit()" #tiForm="ngForm">
+    <form (ngSubmit)="onSubmit(tiForm.value)" #tiForm="ngForm">
       <div class="form-group">
         <label for="pricePerWord">Price Per Word</label>
         <input type="text" class="form-control" id="pricePerWord"

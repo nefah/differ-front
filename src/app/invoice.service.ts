@@ -11,11 +11,11 @@ export class InvoiceService {
 url = "http://localhost:7000/countwords";
     constructor(private http: HttpClient) { }
 
-    postInvoice(invoice: Invoice): Observable<HttpResponse<Invoice>> {
+    postInvoice(invoice: Invoice): Observable<HttpResponse<any>> {
         let httpHeaders = new HttpHeaders({
              'Content-Type' : 'application/json'
         });    
-        return this.http.post<Invoice>(this.url, invoice,
+        return this.http.post<any>(this.url, invoice,
             {
               headers: httpHeaders,
               observe: 'response'

@@ -1,7 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Invoice Form for Translation</h1>
-    <form (ngSubmit)="onSubmit(tiForm.value)" #tiForm="ngForm">
+    <form  #tiForm="ngForm">
       <div class="form-group">
         <label for="pricePerWord">Price Per Word</label>
         <input type="text" class="form-control" id="pricePerWord"
@@ -24,8 +24,23 @@
         </div>
       </div>
       
-      <button type="submit" class="btn btn-success" [disabled]="!tiForm.form.valid">submit</button>
+      <button type="button"  class="btn btn-success" (click)="createInvoice(tiForm.value)" [disabled]="!tiForm.form.valid">submit</button>
       <button type="button" class="btn btn-default" (click)="newInvoice(); tiForm.reset()">reset</button>
     </form>
+  </div>
+</div>
+<div [hidden]="!submitted">
+  <div *ngIf="result">
+    price: {{result.totalPrice}}
+    <table>
+      <tr>
+        <th>word</th>
+        <th>count</th>
+      </tr>
+      <tr *ngFor="let word of result.words">
+        <td>{{ word.word }}</td>
+        <td>{{ word.count }}</td>
+      </tr>
+    </table>
   </div>
 </div>

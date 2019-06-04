@@ -19,7 +19,7 @@ export class InvoiceFormComponent {
   onSubmit(form) { 
     console.log(form);
     this.submitted = true; 
-    this.invoiceService.postInvoice(form);
+    this.invoiceService.postInvoice(form).subscribe(status=> console.log(JSON.stringify(status)));;
     this.newInvoice();
     
   }
